@@ -1,5 +1,6 @@
-package com.example.fragmentexample3;
+package com.example.classActivity4;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -13,8 +14,13 @@ public class SecondActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_second);
         // load second fragment into second activity
-        loadFragment(new SecondFragment(), R.id.fragContainer_second);
+        Intent intent = getIntent();
+        Bundle bundle = new Bundle();
+        bundle.putString("type", intent.getStringExtra("type"));
+        SecondFragment secondFragment = new SecondFragment();
+        secondFragment.setArguments(bundle);
 
+        loadFragment(secondFragment, R.id.fragContainer_second);
     }
 
     public void loadFragment(Fragment fragment, int id){
