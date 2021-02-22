@@ -13,11 +13,26 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
+    private boolean twoPane = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        // if we cannot find second fragment in the layout, only one column
+        if(findViewById(R.id.fragContainer_land_second) != null){
+            twoPane = true;
+        }
+
+        if (!twoPane){
+            loadFragment(new FirstFragment(), R.id.fragContainer_first);
+            Button button = findViewById(R.id.button_personality);
+            button.setOnClickListener(v -> launchActivity(v));
+        } else {
+            loadFragment(new FirstFragment(), R.id.fragContainer_land_first);
+            loadFragment(new SecondFragment(), R.id.fragContainer_land_second);
+        }
 
     }
 

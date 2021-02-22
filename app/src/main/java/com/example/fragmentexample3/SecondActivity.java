@@ -12,7 +12,8 @@ public class SecondActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_second);
-
+        // load second fragment into second activity
+        loadFragment(new SecondFragment(), R.id.fragContainer_second);
 
     }
 
